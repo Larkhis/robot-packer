@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xspeedit</groupId>
+	<artifactId>robot-packer</artifactId>
+	<version>1.0.0</version>
+	<name>XspeedIt Robot Packer</name>
+	<description>An implementation of the bin packing problem</description>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit-version>4.12</junit-version>
+		<log4j-version>1.2.17</log4j-version>
+		<java-version>1.7</java-version>
+		<cobertura-plugin-version>2.7</cobertura-plugin-version>
+		<maven-compiler-plugin-version>3.6.1</maven-compiler-plugin-version>
+		<maven-assembly-plugin-version>3.0.0</maven-assembly-plugin-version>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j-version}</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>${cobertura-plugin-version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin-version}</version>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<!-- Jar file entry point -->
+							<mainClass>com.xspeedit.Application</mainClass>
+						</manifest>
+					</archive>
+					<finalName>${project.artifactId}</finalName>
+				</configuration>
+				<executions>
+					<execution>
+						<id>assemble-all</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>${cobertura-plugin-version}</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<contributors>
+		<contributor>
+			<name>Lokmane ARKHIS</name>
+			<email>arkhis.lokmane@gmail.com</email>
+			<url>https://www.lokmanearkhis.com</url>
+			<roles>
+				<role>Software Engineer</role>
+			</roles>
+		</contributor>
+	</contributors>
+</project>
